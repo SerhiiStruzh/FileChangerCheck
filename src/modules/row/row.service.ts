@@ -23,7 +23,6 @@ export class RowService {
         this.rowCount++;
         
         if (this.rowCount % +process.env.NUMBER_ROW_TO_SEND_MAIL === 0) {
-            console.log('here');
             this.rowCount = 1;
             const allEmails = await getEmailsOfFileAccessors();
             await this.emailService.sendEmail(allEmails.join(', '), 'File changed', `Added ${process.env.NUMBER_ROW_TO_SEND_MAIL} new rows to the sheet!`);

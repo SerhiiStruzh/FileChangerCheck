@@ -23,6 +23,12 @@ import { CacheModule } from '@nestjs/cache-manager';
       database: process.env.DB_NAME,
       models: [Row],
       autoLoadModels: true,
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
+      },
     }),
     CacheModule.register({
       ttl: 600, 
